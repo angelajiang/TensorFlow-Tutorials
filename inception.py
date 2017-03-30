@@ -305,6 +305,12 @@ class Inception:
         # Create a TensorFlow session for executing the graph.
         self.session = tf.Session(graph=self.graph)
 
+    def get_layers(self):
+
+        ops = self.session.graph.get_operations()
+        for op in ops:
+            print(op.name)
+
     def close(self):
         """
         Call this function when you are done using the Inception model.
@@ -607,6 +613,8 @@ if __name__ == '__main__':
 
     # Load the Inception model so it is ready for classifying images.
     model = Inception()
+
+    #model.get_layers()
 
     # Path for a jpeg-image that is included in the downloaded data.
     image_path = os.path.join(data_dir, 'cropped_panda.jpg')
