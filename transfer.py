@@ -141,4 +141,12 @@ print(accuracy)
 session = tf.Session()
 session.run(tf.global_variables_initializer())
 
-optimize(num_iterations=10000)
+#optimize(num_iterations=10000)
+
+opt_vars = [v for v in tf.trainable_variables() if v.name.startswith("pool")]
+opt_names = [v.name for v in tf.trainable_variables()]
+print(opt_names)
+
+print("================== Opt Vars ==================")
+print(opt_vars)
+
